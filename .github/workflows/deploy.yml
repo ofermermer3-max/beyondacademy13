@@ -8,13 +8,23 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
-      - uses: subosito/flutter-action@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.35.0'
           channel: 'stable'
+
+      # 🔍 DEBUG STEP (this will show your actual repo structure in CI)
+      - name: Debug project structure
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Listing files:"
+          ls -R
 
       - name: Install dependencies
         run: flutter pub get
