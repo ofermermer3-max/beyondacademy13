@@ -10,14 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Show folder structure
-        run: ls -la
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.24.0'
           channel: 'stable'
       - name: Run flutter pub get
-        run: flutter pub get
+        run: flutter pub get --no-example
       - name: Build web
         run: flutter build web --release
       - name: Deploy to Netlify
