@@ -10,16 +10,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.32.0'
+          flutter-version: '3.35.0'
           channel: 'stable'
-      - name: Override collection version
-        run: flutter pub add collection:1.19.1 --no-example
-      - name: Run flutter pub get
-        run: flutter pub get --no-example
+
+      - name: Install dependencies
+        run: flutter pub get
+
       - name: Build web
         run: flutter build web --release
+
       - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         with:
