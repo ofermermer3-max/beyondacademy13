@@ -13,7 +13,7 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.29.0'
-          channel: 'stable'
+          channel: 'master'
       - name: Override collection version
         run: flutter pub add collection:1.19.1 --no-example
       - name: Run flutter pub get
